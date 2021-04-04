@@ -14,7 +14,6 @@ on:
 jobs:
   build:
     runs-on: windows-2019
-
     steps:  
     - uses: actions/checkout@v2
     - name: Cài Đặt
@@ -22,10 +21,8 @@ jobs:
     - name: Starting CRD
       run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
     - name: Assign User
-      run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Dungcr.1992" -Force) 
-    - name: Setup thời gian chạy
-      run: Invoke-WebRequest https://audio.ml/pc-windows/timeout.ps1 -OutFile timeout.ps1
-    - name: Giữ Một Kết Nối
+      run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Dungcr.1992" -Force)
+    - name: Giữ Kết Nối Trong 6h
       run: ./timeout.ps1
 
 
